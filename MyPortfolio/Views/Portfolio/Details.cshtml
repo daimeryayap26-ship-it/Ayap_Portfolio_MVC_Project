@@ -5,23 +5,24 @@
 }
 
 <div class="container py-5">
-    <a asp-action="Index" class="btn btn-outline-secondary rounded-pill mb-4">
-        <i class="bi bi-arrow-left me-1"></i> Back to All Projects
+    <a asp-action="Index" class="btn btn-chromic-outline rounded-0 mb-4">
+        <i class="bi bi-arrow-left me-2"></i>Back to All Projects
     </a>
 
-    <div class="card border-0 shadow-sm rounded-3 p-4 mb-5">
+    <!-- Project Detail Card -->
+    <div class="chromic-card p-4 p-lg-5 rounded-0 mb-5 border border-secondary border-opacity-25">
         <div class="row g-4 align-items-center">
             <div class="col-lg-6">
-                <img src="@Model.ImageUrl" class="img-fluid rounded-3 shadow-sm w-100" style="max-height: 350px; object-fit: cover;" alt="@Model.Title" />
+                <img src="@Model.ImageUrl" class="img-fluid rounded-0 shadow w-100" style="max-height: 350px; object-fit: cover;" alt="@Model.Title" />
             </div>
             <div class="col-lg-6">
-                <span class="badge bg-primary mb-2">Project Details</span>
-                <h2 class="fw-bold mb-3">@Model.Title</h2>
-                <p class="text-muted lead fs-6">@Model.Description</p>
-                <hr class="my-4" />
+                <span class="badge bg-secondary text-uppercase tracking-wider mb-3">Project Details</span>
+                <h2 class="fw-bold text-white mb-3">@Model.Title</h2>
+                <p class="text-secondary lead fs-6 mb-4">@Model.Description</p>
+                <hr class="border-secondary border-opacity-25 my-4" />
                 <div>
-                    <a href="@Model.GitHubUrl" target="_blank" class="btn btn-dark btn-lg rounded-pill px-4">
-                        <i class="bi bi-github me-2"></i> View Repository
+                    <a href="@Model.GitHubUrl" target="_blank" class="btn btn-chromic rounded-0 px-4 py-2">
+                        <i class="bi bi-github me-2"></i>View Repository
                     </a>
                 </div>
             </div>
@@ -31,17 +32,19 @@
     <!-- Comment Section -->
     <div class="row">
         <div class="col-lg-8">
-            <h4 class="fw-bold mb-4"><i class="bi bi-chat-left-text me-2"></i>Project Feedback</h4>
+            <h4 class="fw-bold text-white text-uppercase tracking-wider mb-4">
+                <i class="bi bi-chat-left-text me-2"></i>Project Feedback
+            </h4>
 
-            <div class="card border-0 shadow-sm rounded-3 p-4 mb-4">
-                <h6 class="fw-bold mb-3">Leave a comment</h6>
+            <div class="chromic-card p-4 rounded-0 mb-4 border border-secondary border-opacity-25">
+                <h6 class="fw-bold text-white text-uppercase tracking-wide mb-3">Leave a comment</h6>
                 <form asp-action="AddComment" method="post">
                     <input type="hidden" name="projectId" value="@Model.Id" />
                     <div class="mb-3">
-                        <textarea name="commentText" class="form-control" rows="3" placeholder="Write your thoughts about this project..." required></textarea>
+                        <textarea name="commentText" class="form-control bg-dark text-white border-secondary rounded-0 py-2" rows="3" placeholder="Write your thoughts about this project..." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary rounded-pill px-4">
-                        <i class="bi bi-send me-1"></i> Post Comment
+                    <button type="submit" class="btn btn-chromic rounded-0 px-4">
+                        <i class="bi bi-send me-2"></i>Post Comment
                     </button>
                 </form>
             </div>
@@ -51,20 +54,20 @@
                 {
                     @foreach (var comment in Model.Comments)
                     {
-                        <div class="card border-0 shadow-sm rounded-3 p-3 bg-white">
+                        <div class="chromic-card p-3 rounded-0 border border-secondary border-opacity-25">
                             <div class="d-flex align-items-center mb-2">
-                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                <div class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
                                     <i class="bi bi-person-fill"></i>
                                 </div>
-                                <span class="fw-bold small">Reviewer</span>
+                                <span class="fw-bold text-white small">Reviewer</span>
                             </div>
-                            <p class="mb-0 text-secondary ps-4">@comment</p>
+                            <p class="mb-0 text-secondary ps-4 fs-6">@comment</p>
                         </div>
                     }
                 }
                 else
                 {
-                    <div class="alert alert-light text-muted border text-center py-4">
+                    <div class="chromic-card p-4 text-center text-secondary border border-secondary border-opacity-25 rounded-0">
                         <i class="bi bi-chat-square-dots fs-3 d-block mb-2"></i>
                         No comments yet. Be the first to leave feedback!
                     </div>
