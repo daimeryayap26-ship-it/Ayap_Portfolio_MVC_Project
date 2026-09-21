@@ -1,0 +1,84 @@
+﻿@model List<MyPortfolio.Models.Project>
+
+@{
+    ViewData["Title"] = "Portfolio Showcase";
+}
+
+<!-- Chromic Hero with Profile Photo -->
+<div class="chromic-hero py-5 mb-5">
+    <div class="container py-4">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-4 text-center">
+                <div class="position-relative d-inline-block">
+                    <img src="~/images/profile.jpg"
+                         alt="Daimery Gold Ayap"
+                         class="rounded-circle img-fluid border border-2 border-secondary shadow-lg"
+                         style="width: 220px; height: 220px; object-fit: cover;"
+                         onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop';" />
+                </div>
+            </div>
+            <div class="col-lg-8 text-center text-lg-start">
+                <span class="badge bg-secondary text-uppercase tracking-wider mb-2">Software Developer</span>
+                <h1 class="display-4 fw-bold text-white text-uppercase tracking-wide mb-2">Daimery Gold Ayap</h1>
+                <p class="text-secondary lead fs-6 mb-4" style="max-width: 650px;">
+                    Welcome to my official portfolio archive. Showcasing my work in web development, academic software repositories, and hands-on programming projects.
+                </p>
+                <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                    <a href="https://github.com/daimeryayap26-ship-it" target="_blank" class="btn btn-chromic rounded-0 px-4">
+                        <i class="bi bi-github me-2"></i>GitHub Profile
+                    </a>
+                    <a href="#projects-section" class="btn btn-chromic-outline rounded-0 px-4">
+                        View Projects <i class="bi bi-arrow-down ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="projects-section">
+    <div class="row">
+        <!-- Table of Contents Sidebar -->
+        <div class="col-lg-3 mb-4">
+            <div class="chromic-sidebar rounded-0 p-3 sticky-top" style="top: 90px;">
+                <h6 class="text-uppercase text-white fw-bold mb-3 border-bottom border-secondary pb-2">
+                    <i class="bi bi-list-stars me-2"></i>Index
+                </h6>
+                <div class="list-group list-group-flush small">
+                    @foreach (var project in Model)
+                    {
+                        <a href="#project-@project.Id" class="list-group-item chromic-list-item py-2 px-2 text-truncate rounded-0">
+                            <i class="bi bi-dash me-1"></i>@project.Title
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Projects Grid -->
+        <div class="col-lg-9">
+            <div class="row g-4">
+                @foreach (var project in Model)
+                {
+                    <div class="col-md-6" id="project-@project.Id">
+                        <div class="card h-100 chromic-card rounded-0 overflow-hidden">
+                            <img src="@project.ImageUrl" class="card-img-top rounded-0" style="height: 200px; object-fit: cover;" alt="@project.Title">
+                            <div class="card-body d-flex flex-column p-4">
+                                <h5 class="card-title fw-bold text-white mb-2">@project.Title</h5>
+                                <p class="card-text text-secondary flex-grow-1 small fs-6">@project.Description</p>
+                                <div class="pt-3 border-top border-secondary border-opacity-25 d-flex gap-2 align-items-center">
+                                    <a href="@project.GitHubUrl" target="_blank" class="btn btn-chromic-outline btn-sm rounded-0 px-3">
+                                        <i class="bi bi-github me-1"></i> Source
+                                    </a>
+                                    <a asp-action="Details" asp-route-id="@project.Id" class="btn btn-chromic btn-sm rounded-0 px-3 ms-auto">
+                                        View <i class="bi bi-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Daimery Gold</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+            body {
+                background-color: #0d0d0d;
+                color: #e0e0e0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            .chromic-navbar {
+                background: rgba(18, 18, 18, 0.95);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid #2a2a2a;
+            }
+
+            .chromic-brand {
+                font-weight: 800;
+                letter-spacing: 1px;
+                color: #ffffff !important;
+                text-transform: uppercase;
+            }
+
+            .chromic-card {
+                background: #141414;
+                border: 1px solid #282828;
+                transition: all 0.3s ease;
+            }
+
+                .chromic-card:hover {
+                    border-color: #ffffff;
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.08);
+                }
+
+            .btn-chromic {
+                background: #ffffff;
+                color: #000000;
+                font-weight: 600;
+                border: 1px solid #ffffff;
+                transition: all 0.3s ease;
+            }
+
+                .btn-chromic:hover {
+                    background: #000000;
+                    color: #ffffff;
+                    border-color: #ffffff;
+                }
+
+            .btn-chromic-outline {
+                background: transparent;
+                color: #cccccc;
+                border: 1px solid #444444;
+            }
+
+                .btn-chromic-outline:hover {
+                    background: #222222;
+                    color: #ffffff;
+                    border-color: #888888;
+                }
+
+            .chromic-hero {
+                background: linear-gradient(180deg, #181818 0%, #0d0d0d 100%);
+                border-bottom: 1px solid #222222;
+            }
+
+            .chromic-sidebar {
+                background: #141414;
+                border: 1px solid #282828;
+            }
+
+            .chromic-list-item {
+                background: #141414;
+                color: #aaaaaa;
+                border-color: #222222;
+            }
+
+                .chromic-list-item:hover {
+                    background: #222222;
+                    color: #ffffff;
+                }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg chromic-navbar py-3 sticky-top">
+            <div class="container">
+                <a class="navbar-brand chromic-brand" asp-controller="Portfolio" asp-action="Index">
+                    <i class="bi bi-terminal-fill me-2"></i>Daimery Ayap
+                </a>
+                <div class="ms-auto">
+                    <a class="btn btn-chromic-outline btn-sm rounded-0 px-3" asp-controller="Account" asp-action="Logout">
+                        <i class="bi bi-power me-1"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="pb-5">
+        @RenderBody()
+    </main>
+
+    <footer class="py-4 text-center text-muted border-top border-secondary border-opacity-25 mt-5">
+        <div class="container">
+            <small class="text-uppercase tracking-wider">&copy; 2026 DAIMERY GOLD AYAP — ALL RIGHTS RESERVED</small>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
